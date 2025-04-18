@@ -1,0 +1,15 @@
+services:
+  - type: worker
+    name: kick-view-bot
+    runtime: python
+    plan: free
+    buildCommand: |
+      pip install -r requirements.txt
+      playwright install
+    startCommand: python main.py
+    envVars:
+      - key: KICK_USERNAME
+        sync: false
+      - key: KICK_PASSWORD
+        sync: false
+    autoDeploy: false
